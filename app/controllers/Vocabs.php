@@ -36,13 +36,23 @@ class Vocabs extends Controller {
         $id = isset($_GET['id']) ? $_GET['id'] : '';
         //$words = $this->vocabModel->getVocabsOfSubject($id);
         !$this->vocabModel->wordProgress($id) ? $this->vocabModel->startProgress($id) : '';
-        $progress = $this->vocabModel->wordProgress($id);
-        $passive = array_filter($progress, function($obj){
+        //$progress = $this->vocabModel->wordProgress($id);
+        $progress = ORM::for_table('progress')
+                        ->where('subject_id', $id)
+                        ->where('user_id', $_SESSION['user_id'])
+                        ->find_many();
+        $passive = ORM::for_table('progress')
+                        ->where('subject_id', $id)
+                        ->where('user_id', $_SESSION['user_id'])
+                        ->where('status', 'passive')
+                        ->find_many();
+        
+        /* array_filter($progress, function($obj){
                         if ($obj->status != 'passive') {
                             return false;
                         }
-                        return true;
-});
+                        return true; 
+                    }); */
 
         $data = [
             'title' => 'Learn New Words',
@@ -56,6 +66,6 @@ class Vocabs extends Controller {
 
     public function orm(){
         $data =  ORM::for_table('vocabulary')->find_many();
-        echo 'asdasd';
+        prettify($data);
     }
 }

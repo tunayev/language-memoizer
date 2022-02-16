@@ -12,13 +12,15 @@
 
      public function __construct() {
          $url = $this->getUrl();
-
-         // Controller should look for the first value in array
-         if(file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
-             //If exists, set as current
-             $this->currentController = ucwords($url[0]);
-             //Unset the 0 index
-             unset($url[0]);
+        // If url is home, it will be null
+         if($url != null) {
+            // Controller should look for the first value in array
+            if(file_exists('../app/controllers/' . ucwords($url[0]) . '.php') ) {
+                //If exists, set as current
+                $this->currentController = ucwords($url[0]);
+                //Unset the 0 index
+                unset($url[0]);
+            }
          }
          // Require Controller
          require_once '../app/controllers/' . $this->currentController . '.php';

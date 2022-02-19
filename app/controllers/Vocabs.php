@@ -40,26 +40,32 @@ class Vocabs extends Controller {
         $progress = ORM::for_table('progress')
                         ->where('subject_id', $id)
                         ->where('user_id', $_SESSION['user_id'])
-                        ->find_many();
-        $passive = ORM::for_table('progress')
+                        ->find_array();
+        /* $passive = ORM::for_table('progress')
                         ->where('subject_id', $id)
                         ->where('user_id', $_SESSION['user_id'])
                         ->where('status', 'passive')
-                        ->find_many();
+                        ->find_array(); */
+        //$passive2 = array_map(function($passive) {return $passive->as_array();} , $passive);
+        shuffle($progress);
+        $roundQuestions = array_slice($progress, 0, 4);
         
-        /* array_filter($progress, function($obj){
-                        if ($obj->status != 'passive') {
+        $passive = array_filter($progress, function($word){
+                        if ($word['status'] != 'passive') {
                             return false;
                         }
                         return true; 
-                    }); */
+                    });
+        shuffle($passive);
 
         $data = [
             'title' => 'Learn New Words',
             'id' => $id,
             //'words' => $words,
             'progress' => $progress,
-            'passive' => $passive
+            'passive' => $passive,
+            //'passive2' => $passive2,
+            'rquestions' => $roundQuestions
         ];
         $this->view('vocabs/test', $data);
     }

@@ -4,7 +4,7 @@ require_once('../app/bootstrap.php');
 ORM::configure('mysql:host=localhost;dbname=mvcquiz');
 ORM::configure('username', 'root');
 ORM::configure('password', '');
-ORM::configure('return_result_sets', true);
+//ORM::configure('return_result_sets', true);
 // Init Core Library
 
  $init = new Core;

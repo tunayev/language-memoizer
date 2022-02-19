@@ -31,9 +31,9 @@ class CPadmin extends Controller {
         if($_FILES["file"]["size"] > 0)
         {
             $file = fopen($filename, "r");
-            /* while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
+            while (($getData = fgetcsv($file, 10000, ",")) !== FALSE) {
                 $this->vocabModel->addBulkVocab($getData, $subject_id);
-            } */
+            } 
         
             fclose($file);
             flash('bulk_success', 'Words are added'); 

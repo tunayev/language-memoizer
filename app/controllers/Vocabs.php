@@ -30,6 +30,17 @@ class Vocabs extends Controller {
     }
 
     public function test() {
+        // Check for Post
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            // Init data
+            $data = [
+                'post' => $_POST
+            ];
+            prettify($_POST);
+        } else {
         $courses = $this->vocabModel->getCourses();
         $subjects = $this->vocabModel->getCourseWithSubjects();
         $p = isset($_GET['p']) ? $_GET['p'] : 1;
@@ -68,6 +79,7 @@ class Vocabs extends Controller {
             'rquestions' => $roundQuestions
         ];
         $this->view('vocabs/test', $data);
+        }
     }
 
     public function orm(){

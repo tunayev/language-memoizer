@@ -29,28 +29,35 @@ class Vocabs extends Controller {
         $this->view('vocabs/index', $data);
     }
 
-    public function test() {
+    public function test($id = null) {
+        if($id == null) {
+            redirect('vocabs');
+        }
         // Check for Post
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Sanitize data
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+            $p = isset($_GET['p']) ? $_GET['p'] : 0;
             // Init data
             $data = [
-                'post' => $_POST
+                'post'  => $_POST,
+                'id'    => $id,
+                'answers' => findQuestions($_POST),
+                'p'     => $p
             ];
-            prettify($_POST);
+            evaluate($_POST);
+            $this->view('vocabs/test', $data);
         } else {
         $courses = $this->vocabModel->getCourses();
         $subjects = $this->vocabModel->getCourseWithSubjects();
-        $p = isset($_GET['p']) ? $_GET['p'] : 1;
-        $id = isset($_GET['id']) ? $_GET['id'] : '';
-        //$words = $this->vocabModel->getVocabsOfSubject($id);
+        $p = isset($_GET['p']) ? $_GET['p'] : 0;
+        //$id = isset($_GET['id']) ? $_GET['id'] : '';
         !$this->vocabModel->wordProgress($id) ? $this->vocabModel->startProgress($id) : '';
-        //$progress = $this->vocabModel->wordProgress($id);
         $progress = ORM::for_table('progress')
                         ->where('subject_id', $id)
                         ->where('user_id', $_SESSION['user_id'])
+                        ->where_in('status', array('active', 'passive'))
+                        ->order_by_asc('level')
                         ->find_array();
         /* $passive = ORM::for_table('progress')
                         ->where('subject_id', $id)
@@ -58,7 +65,7 @@ class Vocabs extends Controller {
                         ->where('status', 'passive')
                         ->find_array(); */
         //$passive2 = array_map(function($passive) {return $passive->as_array();} , $passive);
-        shuffle($progress);
+        //shuffle($progress);
         $roundQuestions = array_slice($progress, 0, 4);
         
         $passive = array_filter($progress, function($word){
@@ -76,7 +83,8 @@ class Vocabs extends Controller {
             'progress' => $progress,
             'passive' => $passive,
             //'passive2' => $passive2,
-            'rquestions' => $roundQuestions
+            'rquestions' => $roundQuestions,
+            'p' => $p
         ];
         $this->view('vocabs/test', $data);
         }

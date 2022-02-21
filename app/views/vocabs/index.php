@@ -16,8 +16,8 @@
                         <?php if($subject->courseName == $course->name):?>
                             <tr>
                                 <td><?=$subject->name?></td>
-                                <td><a href="<?=URLROOT.'/vocabs/test?id='.$subject->subjectId?>" class="btn btn-primary">Test <i class="fas fa-chevron-right"></i></a> </td>
-                                <td><a href="<?=URLROOT.'/grammar/test?id='.$subject->subjectId?>" class="btn btn-primary">Test</a></td>
+                                <td><a href="<?=URLROOT.'/vocabs/test/'.$subject->subjectId?>" class="btn btn-primary">Test <i class="fas fa-chevron-right"></i></a> </td>
+                                <td><a href="<?=URLROOT.'/grammar/test/'.$subject->subjectId?>" class="btn btn-primary">Test</a></td>
                             </tr>
                         <?php endif;?>
                     <?php endforeach;?>

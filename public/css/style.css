@@ -495,3 +495,15 @@ mark{
 	box-shadow: none;
 
 }
+
+tr.success {
+	background-color: #aae3c9;
+}
+
+tr.danger {
+	background-color: #e3aaaa;
+}
+
+.accordion button, .accordion label {
+	font-weight: 600;
+}

@@ -4,6 +4,9 @@ require_once('../app/bootstrap.php');
 ORM::configure('mysql:host=localhost;dbname=mvcquiz');
 ORM::configure('username', 'root');
 ORM::configure('password', '');
+ORM::configure('id_column_overrides', array(
+    'progress' => 'word_id'
+));
 //ORM::configure('return_result_sets', true);
 // Init Core Library
 

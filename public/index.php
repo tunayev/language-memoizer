@@ -1,13 +1,14 @@
 <?php 
 require_once('../app/bootstrap.php');
 
-ORM::configure('mysql:host=localhost;dbname=mvcquiz');
-ORM::configure('username', 'root');
-ORM::configure('password', '');
+ORM::configure('mysql:host=localhost;dbname='.DB_NAME);
+ORM::configure('username', DB_USER);
+ORM::configure('password', DB_PASS);
 ORM::configure('id_column_overrides', array(
     'progress' => 'word_id'
 ));
-//ORM::configure('return_result_sets', true);
+ORM::configure('driver_options', array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+ORM::configure('return_result_sets', true);
 // Init Core Library
 
  $init = new Core;

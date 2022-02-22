@@ -12,7 +12,7 @@
         <div class="form-group col-lg-4">
             <select name="subjectId" id="" class="form-select">
                 <?php foreach($data['subjects'] as $subject) : ?>
-                <option value="<?=$subject->id?>"><?=$subject->courseName.' - '.$subject->name?></option>
+                <option value="<?=$subject->subjectId?>"><?=$subject->courseName.' - '.$subject->name?></option>
                 <?php endforeach; ?>
             </select>
         </div>

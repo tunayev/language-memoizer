@@ -1,8 +1,8 @@
 <?php
 class CPadmin extends Controller {
     public function __construct() {
-        $this->adminModel = $this->model('admin');
-        $this->vocabModel = $this->model('vocab');
+        $this->adminModel = $this->model('Admin');
+        $this->vocabModel = $this->model('Vocab');
         if(!isAdmin()) {
             redirect('pages/index');
         }

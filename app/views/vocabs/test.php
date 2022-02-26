@@ -14,7 +14,7 @@
         </table>
         <div class="row my-2">
             <div class="col d-grid">
-            <a class="btn btn-success btn-block" href="<?=URLROOT?>/vocabs/test/<?=$data['id'].'?p='.$data['p']+1?>">DEVAM ET</a>
+            <a class="btn btn-success btn-block" href="<?=URLROOT?>/vocabs/test/<?=$data['id'].'?p='.$data['p']?>">DEVAM ET</a>
             </div>
         </div>        
     </div>

@@ -455,22 +455,54 @@ mark{
     width: 24px;
     height: 24px;
     border: 1px solid #ddd;
-    border-radius: 100%;
+    border-radius: 2px;
     background: #fff;
 }
 [type="radio"]:checked + label:after,
 [type="radio"]:not(:checked) + label:after {
-    content: '';
-    width: 13px;
-    height: 13px;
-    background: var(--bs-primary);
+    font-family: "Font Awesome 5 Free"; 
+    content: '\f00c';
+	color: var(--bs-primary);
     position: absolute;
-    top: 5px;
-    left: 6px;
-    border-radius: 100%;
+    top: 3px;
+    left: 4px;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
 }
+
+fieldset p {
+	margin-bottom: 0;
+	margin-top: 1rem;
+}
+fieldset p label {
+	border-color: #cecece;
+    background-color: #fdfdfd;
+	padding: 0.5rem;
+}
+
+fieldset p label:hover {
+	border-color: #17A8E3;
+    background-color: #F3FBFE;
+}
+/* [type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    width: 30px;
+    height: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: .2s ease;
+    transition: .2s ease;
+} */
 [type="radio"]:not(:checked) + label:after {
     opacity: 0;
     -webkit-transform: scale(0);

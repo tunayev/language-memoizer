@@ -28,10 +28,10 @@
             <div id="q<?=$wordAsk['word_id']?>" class="accordion-item">
                 <h3 class="accordion-header" id="flush-headingOne">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<?=$wordAsk['word_id']?>" aria-expanded="false" aria-controls="flush-collapse<?=$wordAsk['word_id']?>">
-                    <div class="col-lg-5">
+                    <div class="col-5">
                         <?=$wordAsk['word']?>
                     </div>
-                    <div id="fill-<?=$wordAsk['word_id']?>" class="col-lg-6">
+                    <div id="fill-<?=$wordAsk['word_id']?>" class="col-6">
                         --------
                     </div>                
                 </button>

@@ -11,7 +11,7 @@ class CPadmin extends Controller {
     public function index() {
         $data = [
             'title' => 'Admin Panel',
-            'description' => 'Here you can edit / add questions'
+            'description' => 'Here you can manage the classes, edit / add questions'
         ];
         $this->view('cpadmin/index', $data);
     }

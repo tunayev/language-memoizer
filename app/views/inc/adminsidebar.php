@@ -11,8 +11,8 @@
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <li><a href="#" class="link-dark rounded">Classes</a></li>
-            <li><a href="#" class="link-dark rounded">Updates</a></li>
-            <li><a href="<?=URLROOT?>/cpadmin/bulkvocab" class="link-dark rounded">Bulk</a></li>
+            <li><a href="#" class="link-dark rounded">Add / Edit</a></li>
+            <li><a href="<?=URLROOT?>/cpadmin/bulkvocab" class="link-dark rounded">Bulk Add</a></li>
           </ul>
         </div>
       </li>
@@ -22,23 +22,9 @@
         </button>
         <div class="collapse" id="dashboard-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview</a></li>
-            <li><a href="#" class="link-dark rounded">Weekly</a></li>
-            <li><a href="#" class="link-dark rounded">Monthly</a></li>
-            <li><a href="#" class="link-dark rounded">Annually</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-          Orders
-        </button>
-        <div class="collapse" id="orders-collapse">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">New</a></li>
-            <li><a href="#" class="link-dark rounded">Processed</a></li>
-            <li><a href="#" class="link-dark rounded">Shipped</a></li>
-            <li><a href="#" class="link-dark rounded">Returned</a></li>
+            <li><a href="#" class="link-dark rounded">Classes</a></li>
+            <li><a href="#" class="link-dark rounded">Add / Edit</a></li>
+            <li><a href="#" class="link-dark rounded">Bulk Add</a></li>
           </ul>
         </div>
       </li>
@@ -57,4 +43,6 @@
         </div>
       </li>
     </ul>
+
+    <?= 'Version: '.APP_VERSION;?>
   </div>
